@@ -51,16 +51,15 @@ def main() -> None:
 
     log = LogObserver()
     email = EmailObserver()
+    sms = SmsObserver()
 
     subject.subscribe(log, topics={"sports", "breaking"})
     subject.subscribe(email, topics=None)
+    subject.subscribe(sms, topics={"breaking"})
 
     subject.notify("weather", "rain")
     subject.notify("sports", "goal")
     subject.notify("breaking", "alert")
-
-    sms = SmsObserver()
-    subject.subscribe(sms, topics={"breaking"})
 
 
 if __name__ == "__main__":
