@@ -45,16 +45,14 @@ class CaramelDecorator:
 
 
 def main() -> None:
-    base = Beverage()
-
-    print(base.description(), base.cost())
-
-    coffee1 = MilkDecorator(SugarDecorator(base))
+    coffee1 = MilkDecorator(Beverage())
     print(coffee1.description(), coffee1.cost())
 
-    # ✅ REQUIRED LINE
-    coffee2 = CaramelDecorator(MilkDecorator(SugarDecorator(base)))
+    coffee2 = MilkDecorator(SugarDecorator(Beverage()))
     print(coffee2.description(), coffee2.cost())
+
+    coffee3 = CaramelDecorator(MilkDecorator(SugarDecorator(Beverage())))
+    print(coffee3.description(), coffee3.cost())
 
 
 if __name__ == "__main__":
